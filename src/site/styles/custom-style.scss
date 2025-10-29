@@ -1,148 +1,148 @@
 /* Thêm vào cuối file src/site/styles/custom-style.scss */
 body {
-    /* ... (Các style tùy chỉnh hiện có của bạn) ... */
+    // /* ... (Các style tùy chỉnh hiện có của bạn) ... */
 
-    /* ----- TOC Sidebar Styling ----- */
-    .sidebar {
-        /* Đảm bảo sidebar có nền mặc định nếu chưa có */
-        /* background-color: var(--background-secondary, #F6F6F6); */
-        /* Sử dụng biến nếu có, nếu không thì dùng màu mặc định */
-    }
+    // /* ----- TOC Sidebar Styling ----- */
+    // .sidebar {
+    //     /* Đảm bảo sidebar có nền mặc định nếu chưa có */
+    //     /* background-color: var(--background-secondary, #F6F6F6); */
+    //     /* Sử dụng biến nếu có, nếu không thì dùng màu mặc định */
+    // }
 
-    .toc {
-        background-color: #F6F6F6;
-        /* Màu nền giống Obsidian */
-        font-size: 0.9em;
-        /* Cỡ chữ nhỏ hơn nội dung chính */
-        padding: 10px;
-        border-radius: 6px;
-        /* Bo góc nhẹ */
-        border: 1px solid #E0E0E0;
-        /* Thêm viền nhẹ giống Obsidian */
-        margin-bottom: 20px;
-        /* Khoảng cách với phần tử dưới */
+    // .toc {
+    //     background-color: #F6F6F6;
+    //     /* Màu nền giống Obsidian */
+    //     font-size: 0.9em;
+    //     /* Cỡ chữ nhỏ hơn nội dung chính */
+    //     padding: 10px;
+    //     border-radius: 6px;
+    //     /* Bo góc nhẹ */
+    //     border: 1px solid #E0E0E0;
+    //     /* Thêm viền nhẹ giống Obsidian */
+    //     margin-bottom: 20px;
+    //     /* Khoảng cách với phần tử dưới */
 
-        .toc-container {
-            border-left: none;
-        }
+    //     .toc-container {
+    //         border-left: none;
+    //     }
 
-        ol {
-            list-style: none;
-            padding-left: 15px;
-            /* Điều chỉnh thụt đầu dòng cấp đầu */
-            margin: 0;
+    //     ol {
+    //         list-style: none;
+    //         padding-left: 15px;
+    //         /* Điều chỉnh thụt đầu dòng cấp đầu */
+    //         margin: 0;
 
-            li {
-                position: relative;
-                /* Cần thiết cho đường kẻ dọc */
-                padding-left: 15px;
-                /* Tạo khoảng trống cho đường kẻ */
-                margin: 4px 0;
-                /* Khoảng cách giữa các mục */
+    //         li {
+    //             position: relative;
+    //             /* Cần thiết cho đường kẻ dọc */
+    //             padding-left: 15px;
+    //             /* Tạo khoảng trống cho đường kẻ */
+    //             margin: 4px 0;
+    //             /* Khoảng cách giữa các mục */
 
-                /* Đường kẻ dọc */
-                &::before {
-                    content: '';
-                    position: absolute;
-                    left: -1px;
-                    /* Vị trí đường kẻ */
-                    top: 0;
-                    bottom: 0;
-                    width: 1px;
-                    /* Độ dày đường kẻ */
-                    background-color: #D8D8D8;
-                    /* Màu đường kẻ */
-                }
+    //             /* Đường kẻ dọc */
+    //             &::before {
+    //                 content: '';
+    //                 position: absolute;
+    //                 left: -1px;
+    //                 /* Vị trí đường kẻ */
+    //                 top: 0;
+    //                 bottom: 0;
+    //                 width: 1px;
+    //                 /* Độ dày đường kẻ */
+    //                 background-color: #D8D8D8;
+    //                 /* Màu đường kẻ */
+    //             }
 
-                /* Đường kẻ ngang kết nối */
-                &::after {
-                    content: '';
-                    position: absolute;
-                    left: -1px;
-                    /* Bắt đầu từ đường kẻ dọc */
-                    top: 0.7em;
-                    /* Vị trí chiều dọc, điều chỉnh cho phù hợp với cỡ chữ */
-                    width: 10px;
-                    /* Độ dài đường kẻ ngang */
-                    height: 1px;
-                    /* Độ dày */
-                    background-color: #D8D8D8;
-                    /* Màu đường kẻ */
-                }
+    //             /* Đường kẻ ngang kết nối */
+    //             &::after {
+    //                 content: '';
+    //                 position: absolute;
+    //                 left: -1px;
+    //                 /* Bắt đầu từ đường kẻ dọc */
+    //                 top: 0.7em;
+    //                 /* Vị trí chiều dọc, điều chỉnh cho phù hợp với cỡ chữ */
+    //                 width: 10px;
+    //                 /* Độ dài đường kẻ ngang */
+    //                 height: 1px;
+    //                 /* Độ dày */
+    //                 background-color: #D8D8D8;
+    //                 /* Màu đường kẻ */
+    //             }
 
-                /* Xóa đường kẻ dọc cho mục cuối cùng ở mỗi cấp */
-                &:last-child::before {
-                    height: 0.7em;
-                    /* Chỉ kéo dài đến đường kẻ ngang */
-                }
+    //             /* Xóa đường kẻ dọc cho mục cuối cùng ở mỗi cấp */
+    //             &:last-child::before {
+    //                 height: 0.7em;
+    //                 /* Chỉ kéo dài đến đường kẻ ngang */
+    //             }
 
-                a {
-                    text-decoration: none;
-                    display: block;
-                    padding: 4px 8px;
-                    /* Thêm padding cho dễ bấm */
-                    border-radius: 4px;
-                    /* Bo góc nhẹ cho hover/active */
-                    color: var(--text-normal);
-                    /* Màu chữ mặc định */
+    //             a {
+    //                 text-decoration: none;
+    //                 display: block;
+    //                 padding: 4px 8px;
+    //                 /* Thêm padding cho dễ bấm */
+    //                 border-radius: 4px;
+    //                 /* Bo góc nhẹ cho hover/active */
+    //                 color: var(--text-normal);
+    //                 /* Màu chữ mặc định */
 
-                    /* Trạng thái Hover */
-                    &:hover {
-                        background-color: rgba(0, 0, 0, 0.05);
-                        /* Màu nền khi hover nhẹ */
-                        color: var(--text-accent);
-                        /* Đổi màu chữ khi hover */
-                        text-decoration: none;
-                    }
+    //                 /* Trạng thái Hover */
+    //                 &:hover {
+    //                     background-color: rgba(0, 0, 0, 0.05);
+    //                     /* Màu nền khi hover nhẹ */
+    //                     color: var(--text-accent);
+    //                     /* Đổi màu chữ khi hover */
+    //                     text-decoration: none;
+    //                 }
 
-                    /* Trạng thái Active (giả sử có class 'active' được thêm vào bằng JS) */
-                    &.active {
-                        background-color: rgba(97, 186, 245, 0.2);
-                        /* Màu nền khi active */
-                        color: var(--text-accent);
-                        /* Màu chữ khi active */
-                        font-weight: 600;
-                        /* In đậm chữ khi active */
-                    }
-                }
+    //                 /* Trạng thái Active (giả sử có class 'active' được thêm vào bằng JS) */
+    //                 &.active {
+    //                     background-color: rgba(97, 186, 245, 0.2);
+    //                     /* Màu nền khi active */
+    //                     color: var(--text-accent);
+    //                     /* Màu chữ khi active */
+    //                     font-weight: 600;
+    //                     /* In đậm chữ khi active */
+    //                 }
+    //             }
 
-                /* Căn chỉnh thụt đầu dòng cho các cấp con */
-                ol {
-                    padding-left: 15px;
-                    /* Thụt đầu dòng cho cấp tiếp theo */
-                }
-            }
-        }
+    //             /* Căn chỉnh thụt đầu dòng cho các cấp con */
+    //             ol {
+    //                 padding-left: 15px;
+    //                 /* Thụt đầu dòng cho cấp tiếp theo */
+    //             }
+    //         }
+    //     }
 
-        /* Loại bỏ đường kẻ cho cấp đầu tiên */
-        &>ol {
-            padding-left: 0;
+    //     /* Loại bỏ đường kẻ cho cấp đầu tiên */
+    //     &>ol {
+    //         padding-left: 0;
 
-            li {
-                padding-left: 0;
+    //         li {
+    //             padding-left: 0;
 
-                &::before,
-                &::after {
-                    display: none;
-                    /* Ẩn đường kẻ cho cấp 1 */
-                }
+    //             &::before,
+    //             &::after {
+    //                 display: none;
+    //                 /* Ẩn đường kẻ cho cấp 1 */
+    //             }
 
-                ol {
+    //             ol {
 
-                    /* Cấp 2 sẽ bắt đầu có đường kẻ */
-                    li {
-                        padding-left: 15px;
+    //                 /* Cấp 2 sẽ bắt đầu có đường kẻ */
+    //                 li {
+    //                     padding-left: 15px;
 
-                        &::before,
-                        &::after {
-                            display: block;
-                            /* Hiện lại đường kẻ từ cấp 2 */
-                        }
-                    }
-                }
-            }
-        }
-    }
+    //                     &::before,
+    //                     &::after {
+    //                         display: block;
+    //                         /* Hiện lại đường kẻ từ cấp 2 */
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     /* ----- End TOC Sidebar Styling ----- */
 }
