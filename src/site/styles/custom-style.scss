@@ -1,148 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 /* Thêm vào cuối file src/site/styles/custom-style.scss */
 body {
-    // /* ... (Các style tùy chỉnh hiện có của bạn) ... */
+    /* ... (Các style tùy chỉnh hiện có của bạn) ... */
 
-    // /* ----- TOC Sidebar Styling ----- */
-    // .sidebar {
-    //     /* Đảm bảo sidebar có nền mặc định nếu chưa có */
-    //     /* background-color: var(--background-secondary, #F6F6F6); */
-    //     /* Sử dụng biến nếu có, nếu không thì dùng màu mặc định */
-    // }
+    /* ----- TOC Sidebar Styling ----- */
+    .sidebar {
+        // min-width: 250px !important; /* Đặt độ rộng tối thiểu, ví dụ 250px */
+        // width: 250px !important;     /* Đặt độ rộng cố định */
+        display: block !important;    /* Luôn hiển thị sidebar */
+        // position: sticky !important;  /* Giữ sidebar ở vị trí khi cuộn */
+        // top: 0;                       /* Vị trí bắt đầu dính ở trên cùng */
+    }
 
-    // .toc {
-    //     background-color: #F6F6F6;
-    //     /* Màu nền giống Obsidian */
-    //     font-size: 0.9em;
-    //     /* Cỡ chữ nhỏ hơn nội dung chính */
-    //     padding: 10px;
-    //     border-radius: 6px;
-    //     /* Bo góc nhẹ */
-    //     border: 1px solid #E0E0E0;
-    //     /* Thêm viền nhẹ giống Obsidian */
-    //     margin-bottom: 20px;
-    //     /* Khoảng cách với phần tử dưới */
+    .toc {
+        font-family: 'Roboto', sans-serif;
+        background-color: #F6F6F6;
+        /* Màu nền giống Obsidian */
+        font-size: 0.95em;
+        /* Cỡ chữ nhỏ hơn nội dung chính */
+        padding: 10px;
+        border-radius: 6px;
+        /* Bo góc nhẹ */
+        // border: 1px solid #E0E0E0;
+        /* Thêm viền nhẹ giống Obsidian */
+        margin-bottom: 20px;
+        /* Khoảng cách với phần tử dưới */
 
-    //     .toc-container {
-    //         border-left: none;
-    //     }
+        .toc-title-container {
+            /* Có thể thêm style cho tiêu đề nếu cần */
+        }
 
-    //     ol {
-    //         list-style: none;
-    //         padding-left: 15px;
-    //         /* Điều chỉnh thụt đầu dòng cấp đầu */
-    //         margin: 0;
+        .toc-container {
+            border-left: none;
+            /* Bỏ đường kẻ mặc định nếu có */
+        }
 
-    //         li {
-    //             position: relative;
-    //             /* Cần thiết cho đường kẻ dọc */
-    //             padding-left: 15px;
-    //             /* Tạo khoảng trống cho đường kẻ */
-    //             margin: 4px 0;
-    //             /* Khoảng cách giữa các mục */
+        ol {
+            list-style: none;
+            padding-left: 10px;
+            /* Điều chỉnh thụt đầu dòng cấp đầu */
+            margin: 0;
 
-    //             /* Đường kẻ dọc */
-    //             &::before {
-    //                 content: '';
-    //                 position: absolute;
-    //                 left: -1px;
-    //                 /* Vị trí đường kẻ */
-    //                 top: 0;
-    //                 bottom: 0;
-    //                 width: 1px;
-    //                 /* Độ dày đường kẻ */
-    //                 background-color: #D8D8D8;
-    //                 /* Màu đường kẻ */
-    //             }
+            li {
+                position: relative;
+                /* Cần thiết cho đường kẻ dọc */
+                padding-left: 5px;
+                /* Tạo khoảng trống cho đường kẻ */
+                margin: 2px 0;
+                /* Khoảng cách giữa các mục */
 
-    //             /* Đường kẻ ngang kết nối */
-    //             &::after {
-    //                 content: '';
-    //                 position: absolute;
-    //                 left: -1px;
-    //                 /* Bắt đầu từ đường kẻ dọc */
-    //                 top: 0.7em;
-    //                 /* Vị trí chiều dọc, điều chỉnh cho phù hợp với cỡ chữ */
-    //                 width: 10px;
-    //                 /* Độ dài đường kẻ ngang */
-    //                 height: 1px;
-    //                 /* Độ dày */
-    //                 background-color: #D8D8D8;
-    //                 /* Màu đường kẻ */
-    //             }
+                /* Đường kẻ dọc */
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: -1px;
+                    /* Vị trí đường kẻ */
+                    top: 0;
+                    bottom: 0;
+                    width: 1px;
+                    /* Độ dày đường kẻ */
+                    background-color: #D8D8D8;
+                    /* Màu đường kẻ */
+                }
 
-    //             /* Xóa đường kẻ dọc cho mục cuối cùng ở mỗi cấp */
-    //             &:last-child::before {
-    //                 height: 0.7em;
-    //                 /* Chỉ kéo dài đến đường kẻ ngang */
-    //             }
+                /* Đường kẻ ngang kết nối */
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: -1px;
+                    /* Bắt đầu từ đường kẻ dọc */
+                    top: 0.7em;
+                    /* Vị trí chiều dọc, điều chỉnh cho phù hợp với cỡ chữ */
+                    width: 10px;
+                    /* Độ dài đường kẻ ngang */
+                    height: 1px;
+                    /* Độ dày */
+                    background-color: #D8D8D8;
+                    /* Màu đường kẻ */
+                }
 
-    //             a {
-    //                 text-decoration: none;
-    //                 display: block;
-    //                 padding: 4px 8px;
-    //                 /* Thêm padding cho dễ bấm */
-    //                 border-radius: 4px;
-    //                 /* Bo góc nhẹ cho hover/active */
-    //                 color: var(--text-normal);
-    //                 /* Màu chữ mặc định */
+                /* Xóa đường kẻ dọc cho mục cuối cùng ở mỗi cấp */
+                &:last-child::before {
+                    height: 0.7em;
+                    /* Chỉ kéo dài đến đường kẻ ngang */
+                }
 
-    //                 /* Trạng thái Hover */
-    //                 &:hover {
-    //                     background-color: rgba(0, 0, 0, 0.05);
-    //                     /* Màu nền khi hover nhẹ */
-    //                     color: var(--text-accent);
-    //                     /* Đổi màu chữ khi hover */
-    //                     text-decoration: none;
-    //                 }
+                a {
+                    text-decoration: none;
+                    display: block;
+                    padding: 2px 4px;
+                    /* Thêm padding cho dễ bấm */
+                    border-radius: 4px;
+                    /* Bo góc nhẹ cho hover/active */ // color: var(--text-normal);
+                    color: #505050 !important;
+                    font-style: normal;
+                    font-weight: 100 !important;
+                    text-transform: none;
+                    /* Màu chữ mặc định */
 
-    //                 /* Trạng thái Active (giả sử có class 'active' được thêm vào bằng JS) */
-    //                 &.active {
-    //                     background-color: rgba(97, 186, 245, 0.2);
-    //                     /* Màu nền khi active */
-    //                     color: var(--text-accent);
-    //                     /* Màu chữ khi active */
-    //                     font-weight: 600;
-    //                     /* In đậm chữ khi active */
-    //                 }
-    //             }
+                    /* Trạng thái Hover */
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.05);
+                        /* Màu nền khi hover nhẹ */
+                        color: var(--text-accent);
+                        /* Đổi màu chữ khi hover */
+                        text-decoration: none;
+                    }
 
-    //             /* Căn chỉnh thụt đầu dòng cho các cấp con */
-    //             ol {
-    //                 padding-left: 15px;
-    //                 /* Thụt đầu dòng cho cấp tiếp theo */
-    //             }
-    //         }
-    //     }
+                    /* Trạng thái Active (giả sử có class 'active' được thêm vào bằng JS) */
+                    &.active {
+                        background-color: rgba(97, 186, 245, 0.2);
+                        /* Màu nền khi active */
+                        color: var(--text-accent);
+                        /* Màu chữ khi active */
+                        font-weight: 600;
+                        /* In đậm chữ khi active */
+                    }
+                }
 
-    //     /* Loại bỏ đường kẻ cho cấp đầu tiên */
-    //     &>ol {
-    //         padding-left: 0;
+                /* Căn chỉnh thụt đầu dòng cho các cấp con */
+                ol {
+                    padding-left: 5px;
+                    /* Thụt đầu dòng cho cấp tiếp theo */
+                }
+            }
+        }
 
-    //         li {
-    //             padding-left: 0;
+        /* Loại bỏ đường kẻ cho cấp đầu tiên */
+        &>ol {
+            padding-left: 0;
 
-    //             &::before,
-    //             &::after {
-    //                 display: none;
-    //                 /* Ẩn đường kẻ cho cấp 1 */
-    //             }
+            li {
+                padding-left: 0;
 
-    //             ol {
+                &::before,
+                &::after {
+                    display: none;
+                    /* Ẩn đường kẻ cho cấp 1 */
+                }
 
-    //                 /* Cấp 2 sẽ bắt đầu có đường kẻ */
-    //                 li {
-    //                     padding-left: 15px;
+                ol {
 
-    //                     &::before,
-    //                     &::after {
-    //                         display: block;
-    //                         /* Hiện lại đường kẻ từ cấp 2 */
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+                    /* Cấp 2 sẽ bắt đầu có đường kẻ */
+                    li {
+                        padding-left: 15px;
+
+                        &::before,
+                        &::after {
+                            display: block;
+                            /* Hiện lại đường kẻ từ cấp 2 */
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     /* ----- End TOC Sidebar Styling ----- */
+
+    /* Apply font-weight: 100 !important to content, excluding headings */
+    .cm-s-obsidian {
+        *:not(h1):not(h2):not(h3):not(strong) {
+            font-weight: 400 !important;
+            font-family: 'Roboto', sans-serif;
+            color: #333333;
+        }
+    }
+    table {
+        thead {
+            th {
+                text-align: left; // căn trái
+                font-size: 15px; // kích thước chữ
+                font-weight: bold; // độ đậm
+                color: #333; // màu chữ
+                padding: 8px 12px; // khoảng cách trong ô
+                border-bottom: 2px solid #ddd; // viền dưới
+            }
+        }
+    }
 }
