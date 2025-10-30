@@ -22,109 +22,56 @@ body {
             /* Style cho tiêu đề */
         }
 
-                .toc-container {
-                    font-size: 1rem;
-                    overflow-y: auto;
-                    margin-bottom: 10px;
-                    border-left: 1px solid var(--text-accent);
-        
-                    ul {
-                        list-style-type: none;
-                        padding-inline-start: 15px !important;
-                        margin-top: 0;
-                        margin-bottom: 0;
-                    }
-        
-                    ul:not(:first-child) {
-                        margin-bottom: 3px;
-                    }
-        
-                    li {
-                        padding-top: 4px;
-        
-                        &::before {
-                            content: "" !important;
-                            /* Thay đổi từ "# " thành "" */
-                            color: var(--text-accent);
-                            font-size: 0.8rem;
-                        }
-        
-                        a {
-                            text-decoration: none;
-        
-                            &:hover {
-                                text-decoration: underline;
-                            }
-                        }
+        .toc-container {
+            /* Xóa đường line màu tím bên ngoài */
+            border-left: none !important;
+
+            font-size: 1rem;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            //border-left: 1px solid var(--text-accent);
+
+            ul {
+                list-style-type: none;
+                padding-inline-start: 15px !important;
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+
+            ul:not(:first-child) {
+                margin-bottom: 3px;
+            }
+
+            li {
+                padding-top: 4px;
+
+                &::before {
+                    content: "" !important;
+                    /* Thay đổi từ "# " thành "" */
+                    color: var(--text-accent);
+                    font-size: 0.8rem;
+                }
+
+                a {
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
                     }
                 }
+            }
+        }
 
         ol {
             list-style: none;
-            padding-left: 10px;
+            padding-left: 0;
             margin: 0;
 
             li {
                 position: relative;
-                padding-left: 20px;
-                /* Tăng padding để có chỗ cho toggle button */
+                padding-left: 0;
                 margin: 2px 0;
 
-                /* Đường kẻ dọc */
-                &::before {
-                    content: '';
-                    position: absolute;
-                    left: -1px;
-                    top: 0;
-                    bottom: 0;
-                    width: 1px;
-                    background-color: #D8D8D8;
-                }
-
-                /* Đường kẻ ngang kết nối */
-                &::after {
-                    content: '';
-                    position: absolute;
-                    left: -1px;
-                    top: 0.7em;
-                    width: 10px;
-                    height: 1px;
-                    background-color: #D8D8D8;
-                }
-
-                /* Xóa đường kẻ dọc cho mục cuối cùng */
-                &:last-child::before {
-                    height: 0.7em;
-                }
-
-                                a {
-                                    text-decoration: none;
-                                    display: block;
-                                    padding: 2px 4px;
-                                    border-radius: 4px;
-                                    color: rgb(97, 186, 245) !important;
-                                    /* Màu giống heading */
-                                    font-style: normal;
-                                    font-weight: 100 !important;
-                                    text-transform: none;
-                                    transition: all 0.2s ease;
-                
-                                    /* Hover */
-                                    &:hover {
-                                        background-color: rgba(97, 186, 245, 0.1);
-                                        color: rgb(97, 186, 245) !important;
-                                        text-decoration: none;
-                                    }
-                
-                                    /* Active - background color khi được chọn */
-                                    &.active {
-                                        background-color: rgb(97, 186, 245) !important;
-                                        color: white !important;
-                                        font-weight: 600 !important;
-                                        border-left: 3px solid rgb(97, 186, 245);
-                                        padding-left: 17px; /* Tăng padding để chữ không bị dính vào lề */
-                                    }
-                                }
                 a {
                     text-decoration: none;
                     display: block;
@@ -143,42 +90,48 @@ body {
                         color: rgb(97, 186, 245) !important;
                         text-decoration: none;
                     }
-                }
 
-                /* Căn chỉnh thụt đầu dòng cho các cấp con */
-                ol {
-                    padding-left: 5px;
+                    /* Active - background color khi được chọn */
+                    &.active {
+                        background-color: rgb(97, 186, 245) !important;
+                        color: white !important;
+                        font-weight: 600 !important;
+                        border-left: 3px solid rgb(97, 186, 245);
+                        padding-left: 17px;
+                        /* Tăng padding để chữ không bị dính vào lề */
+                    }
                 }
             }
+        }
+
+        /* Đường kẻ dọc chỉ cho các item CÓ CON (có ol bên trong) */
+        li:has(ol) {
+            position: relative;
+
+            /* Đường kẻ dọc nối các cấp con */
+            &::before {
+                content: '';
+                position: absolute;
+                left: 12px;
+                /* Căn giữa với icon 14px */
+                top: 24px;
+                /* Bắt đầu từ dưới icon */
+                bottom: 0;
+                width: 1px;
+                background-color: #D8D8D8;
+                z-index: 0;
+            }
+        }
+
+        /* Thụt lề cho các cấp con */
+        ol ol {
+            padding-left: 20px;
+            margin-left: 0;
         }
 
         /* Loại bỏ đường kẻ cho cấp đầu tiên */
         &>ol {
             padding-left: 0;
-
-            li {
-                padding-left: 20px;
-                /* Vẫn cần padding cho toggle button */
-
-                &::before,
-                &::after {
-                    display: none;
-                }
-
-                ol {
-
-                    /* Cấp 2 sẽ bắt đầu có đường kẻ */
-                    li {
-                        padding-left: 20px;
-                        /* Consistent padding */
-
-                        &::before,
-                        &::after {
-                            display: block;
-                        }
-                    }
-                }
-            }
         }
 
         /* Active - background color khi được chọn cho BẤT KỲ link nào trong TOC */
@@ -193,7 +146,7 @@ body {
     }
 
     /* ============================================
-       EXPAND/COLLAPSE UI
+       EXPAND/COLLAPSE UI - Icon nằm trên đường kẻ
        ============================================ */
 
     .toc-item-wrapper {
@@ -203,10 +156,10 @@ body {
 
     .toc-toggle {
         position: absolute;
-        left: -18px;
-        top: 4px;
-        width: 14px;
-        height: 14px;
+        left: 0;
+        top: 3px;
+        width: 24px;
+        height: 24px;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
@@ -217,7 +170,12 @@ body {
         font-size: 10px;
         line-height: 1;
         user-select: none;
-        z-index: 1;
+        z-index: 2;
+        /* Đặt z-index cao để icon nằm trên đường kẻ */
+        background-color: #F6F6F6;
+        /* Background giống TOC để tạo hiệu ứng đường kẻ bị đứt */
+        padding: 0.5px;
+        /* Tạo khoảng trắng xung quanh icon */
     }
 
     .toc-toggle:hover {
@@ -225,10 +183,28 @@ body {
         color: #333333;
     }
 
+    /* Link trong wrapper cần padding để tránh đè lên icon */
+    .toc-item-wrapper a {
+        margin-left: 20px;
+        /* Tạo khoảng cách với icon */
+        padding-left: 4px !important;
+    }
+
+    /* Đảm bảo link active vẫn có style đúng */
+    .toc-item-wrapper a.active {
+        padding-left: 17px !important;
+    }
+
     .toc-toggle::before {
-        content: "▶";
-        display: block;
-        transform: rotate(0deg);
+        content: "";
+        display: inline-block;
+        width: 1.4em;
+        height: 1.4em;
+        background-color: currentColor;
+        -webkit-mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>');
+        mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>');
+        -webkit-mask-size: contain;
+        mask-size: contain;
         transition: transform 0.2s ease;
     }
 
@@ -300,7 +276,19 @@ body {
         font-size: 0.9rem;
     }
 
-    body .toc ol li {
-        padding-left: 15px;
+    body .toc ol ol {
+        padding-left: 18px;
+        /* Giảm thụt lề trên mobile */
+    }
+
+    body .toc li:has(ol)::before {
+        left: 6px;
+        /* Điều chỉnh vị trí đường kẻ cho mobile */
+    }
+
+    body .toc-item-wrapper a {
+        margin-left: 18px;
+        /* Điều chỉnh khoảng cách cho mobile */
+        padding-left: 4px !important;
     }
 }
