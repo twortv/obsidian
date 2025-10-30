@@ -133,37 +133,42 @@
     // Highlight section đang active dựa vào scroll position
     function highlightActiveSection() {
         const tocLinks = document.querySelectorAll('.toc-container a');
-        
+
         if (tocLinks.length === 0) return;
-        
+
         const scrollPos = window.scrollY + 100; // Offset
         let currentSection = null;
-        
+        let currentHeadingLevel = null;
+
         // Tìm section gần nhất với scroll position
         tocLinks.forEach(function(link) {
             const targetId = link.getAttribute('href');
-            
+
             if (!targetId || !targetId.startsWith('#')) return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (!targetElement) return;
-            
+
             const elementTop = targetElement.offsetTop;
-            
+
             if (scrollPos >= elementTop) {
                 currentSection = link;
+                // Lấy level của heading (h1, h2, h3, etc.)
+                currentHeadingLevel = targetElement.tagName.toLowerCase();
             }
         });
-        
-        // Remove tất cả active classes
+
+        // Remove tất cả active classes và data attributes
         tocLinks.forEach(function(link) {
             link.classList.remove('active');
+            link.removeAttribute('data-heading-level');
         });
-        
-        // Add active class vào current section
-        if (currentSection) {
+
+        // Add active class và heading level vào current section
+        if (currentSection && currentHeadingLevel) {
             currentSection.classList.add('active');
-            
+            currentSection.setAttribute('data-heading-level', currentHeadingLevel);
+
             // Auto expand parents nếu bị collapse
             expandParents(currentSection);
         }
