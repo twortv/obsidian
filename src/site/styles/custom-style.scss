@@ -1,67 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-/* Thêm vào cuối file src/site/styles/custom-style.scss */
 body {
-    /* ... (Các style tùy chỉnh hiện có của bạn) ... */
 
     /* ----- TOC Sidebar Styling ----- */
     .sidebar {
-        // min-width: 250px !important; /* Đặt độ rộng tối thiểu, ví dụ 250px */
-        // width: 250px !important;     /* Đặt độ rộng cố định */
-        display: block !important;    /* Luôn hiển thị sidebar */
-        // position: sticky !important;  /* Giữ sidebar ở vị trí khi cuộn */
-        // top: 0;                       /* Vị trí bắt đầu dính ở trên cùng */
+        display: block !important;
     }
 
+    /* ============================================
+       TOC STYLING - Giữ nguyên style gốc + thêm expand/collapse
+       ============================================ */
     .toc {
         font-family: 'Roboto', sans-serif;
         background-color: #F6F6F6;
-        /* Màu nền giống Obsidian */
         font-size: 0.95em;
-        /* Cỡ chữ nhỏ hơn nội dung chính */
         padding: 10px;
         border-radius: 6px;
-        /* Bo góc nhẹ */
-        // border: 1px solid #E0E0E0;
-        /* Thêm viền nhẹ giống Obsidian */
         margin-bottom: 20px;
-        /* Khoảng cách với phần tử dưới */
 
         .toc-title-container {
-            /* Có thể thêm style cho tiêu đề nếu cần */
+            /* Style cho tiêu đề */
         }
 
         .toc-container {
-            border-left: none;
-            /* Bỏ đường kẻ mặc định nếu có */
+            /* Bỏ border-left mặc định */
         }
 
         ol {
             list-style: none;
             padding-left: 10px;
-            /* Điều chỉnh thụt đầu dòng cấp đầu */
             margin: 0;
 
             li {
                 position: relative;
-                /* Cần thiết cho đường kẻ dọc */
-                padding-left: 5px;
-                /* Tạo khoảng trống cho đường kẻ */
+                padding-left: 20px;
+                /* Tăng padding để có chỗ cho toggle button */
                 margin: 2px 0;
-                /* Khoảng cách giữa các mục */
 
                 /* Đường kẻ dọc */
                 &::before {
                     content: '';
                     position: absolute;
                     left: -1px;
-                    /* Vị trí đường kẻ */
                     top: 0;
                     bottom: 0;
                     width: 1px;
-                    /* Độ dày đường kẻ */
                     background-color: #D8D8D8;
-                    /* Màu đường kẻ */
                 }
 
                 /* Đường kẻ ngang kết nối */
@@ -69,60 +53,46 @@ body {
                     content: '';
                     position: absolute;
                     left: -1px;
-                    /* Bắt đầu từ đường kẻ dọc */
                     top: 0.7em;
-                    /* Vị trí chiều dọc, điều chỉnh cho phù hợp với cỡ chữ */
                     width: 10px;
-                    /* Độ dài đường kẻ ngang */
                     height: 1px;
-                    /* Độ dày */
                     background-color: #D8D8D8;
-                    /* Màu đường kẻ */
                 }
 
-                /* Xóa đường kẻ dọc cho mục cuối cùng ở mỗi cấp */
+                /* Xóa đường kẻ dọc cho mục cuối cùng */
                 &:last-child::before {
                     height: 0.7em;
-                    /* Chỉ kéo dài đến đường kẻ ngang */
                 }
 
                 a {
                     text-decoration: none;
                     display: block;
                     padding: 2px 4px;
-                    /* Thêm padding cho dễ bấm */
                     border-radius: 4px;
-                    /* Bo góc nhẹ cho hover/active */ // color: var(--text-normal);
                     color: #505050 !important;
                     font-style: normal;
                     font-weight: 100 !important;
                     text-transform: none;
-                    /* Màu chữ mặc định */
+                    transition: all 0.2s ease;
 
-                    /* Trạng thái Hover */
+                    /* Hover */
                     &:hover {
                         background-color: rgba(0, 0, 0, 0.05);
-                        /* Màu nền khi hover nhẹ */
                         color: var(--text-accent);
-                        /* Đổi màu chữ khi hover */
                         text-decoration: none;
                     }
 
-                    /* Trạng thái Active (giả sử có class 'active' được thêm vào bằng JS) */
+                    /* Active - QUAN TRỌNG */
                     &.active {
-                        background-color: rgba(97, 186, 245, 0.2);
-                        /* Màu nền khi active */
-                        color: var(--text-accent);
-                        /* Màu chữ khi active */
-                        font-weight: 600;
-                        /* In đậm chữ khi active */
+                        background-color: rgba(97, 186, 245, 0.2) !important;
+                        color: var(--text-accent) !important;
+                        font-weight: 600 !important;
                     }
                 }
 
                 /* Căn chỉnh thụt đầu dòng cho các cấp con */
                 ol {
                     padding-left: 5px;
-                    /* Thụt đầu dòng cho cấp tiếp theo */
                 }
             }
         }
@@ -132,24 +102,24 @@ body {
             padding-left: 0;
 
             li {
-                padding-left: 0;
+                padding-left: 20px;
+                /* Vẫn cần padding cho toggle button */
 
                 &::before,
                 &::after {
                     display: none;
-                    /* Ẩn đường kẻ cho cấp 1 */
                 }
 
                 ol {
 
                     /* Cấp 2 sẽ bắt đầu có đường kẻ */
                     li {
-                        padding-left: 15px;
+                        padding-left: 20px;
+                        /* Consistent padding */
 
                         &::before,
                         &::after {
                             display: block;
-                            /* Hiện lại đường kẻ từ cấp 2 */
                         }
                     }
                 }
@@ -157,9 +127,84 @@ body {
         }
     }
 
+    /* ============================================
+       EXPAND/COLLAPSE UI
+       ============================================ */
+
+    .toc-item-wrapper {
+        position: relative;
+        display: block;
+    }
+
+    .toc-toggle {
+        position: absolute;
+        left: -18px;
+        top: 4px;
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        transition: all 0.2s ease;
+        color: #999999;
+        font-size: 10px;
+        line-height: 1;
+        user-select: none;
+        z-index: 1;
+    }
+
+    .toc-toggle:hover {
+        background-color: #E0E0E0;
+        color: #333333;
+    }
+
+    .toc-toggle::before {
+        content: "▶";
+        display: block;
+        transform: rotate(0deg);
+        transition: transform 0.2s ease;
+    }
+
+    .toc-toggle.expanded::before {
+        transform: rotate(90deg);
+    }
+
+    .toc-children {
+        overflow: hidden;
+        max-height: 2000px;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+        opacity: 1;
+    }
+
+    .toc-children.collapsed {
+        max-height: 0 !important;
+        opacity: 0;
+        margin: 0;
+    }
+
     /* ----- End TOC Sidebar Styling ----- */
 
-    /* Apply font-weight: 100 !important to content, excluding headings */
+    /* ============================================
+       MÀU CHO HEADINGS
+       ============================================ */
+    .markdown-preview-view h1,
+    .markdown-preview-view h2,
+    .markdown-preview-view h3,
+    .markdown-preview-view h4,
+    .markdown-preview-view h5,
+    .markdown-preview-view h6,
+    .cm-s-obsidian h1,
+    .cm-s-obsidian h2,
+    .cm-s-obsidian h3,
+    .cm-s-obsidian h4,
+    .cm-s-obsidian h5,
+    .cm-s-obsidian h6 {
+        color: rgb(97, 186, 245) !important;
+    }
+
+    /* Apply font-weight to content, excluding headings */
     .cm-s-obsidian {
         *:not(h1):not(h2):not(h3):not(strong) {
             font-weight: 400 !important;
@@ -167,16 +212,30 @@ body {
             color: #333333;
         }
     }
+
     table {
         thead {
             th {
-                text-align: left; // căn trái
-                font-size: 15px; // kích thước chữ
-                font-weight: bold; // độ đậm
-                color: #333; // màu chữ
-                padding: 8px 12px; // khoảng cách trong ô
-                border-bottom: 2px solid #ddd; // viền dưới
+                text-align: left;
+                font-size: 15px;
+                font-weight: bold;
+                color: #333;
+                padding: 8px 12px;
+                border-bottom: 2px solid #ddd;
             }
         }
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    body .toc {
+        font-size: 0.9rem;
+    }
+
+    body .toc ol li {
+        padding-left: 15px;
     }
 }

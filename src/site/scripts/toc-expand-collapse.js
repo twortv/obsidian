@@ -1,63 +1,99 @@
 /**
- * TOC EXPAND/COLLAPSE FUNCTIONALITY
- * Tự động thêm chức năng expand/collapse cho Table of Contents
+ * TOC EXPAND/COLLAPSE & ACTIVE HIGHLIGHTING
+ * Tự động xử lý TOC structure từ Eleventy TOC plugin
  */
 
 (function() {
     'use strict';
     
-    // Chờ DOM load xong
+    // Khởi tạo TOC
     function initTOC() {
         const tocContainer = document.querySelector('.toc-container');
         
         if (!tocContainer) {
+            console.log('TOC container not found');
             return;
         }
         
-        // Tìm tất cả các list items có children
-        const processListItems = (parentList) => {
-            const items = parentList.children;
+        console.log('Initializing TOC...');
+        
+        // Xử lý expand/collapse
+        processExpandCollapse(tocContainer);
+        
+        // Highlight active section
+        highlightActiveSection();
+        
+        // Listen scroll để update active section
+        let ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    highlightActiveSection();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+        
+        console.log('TOC initialized successfully');
+    }
+    
+    // Xử lý expand/collapse cho TOC
+    function processExpandCollapse(tocContainer) {
+        // Tìm tất cả các <ol> hoặc <ul> trong TOC
+        const allLists = tocContainer.querySelectorAll('ol, ul');
+        
+        allLists.forEach(function(list) {
+            const items = list.children;
             
             for (let i = 0; i < items.length; i++) {
                 const item = items[i];
-                const childList = item.querySelector('ul, ol');
+                
+                // Kiểm tra xem item có children list không
+                const childList = item.querySelector('ol, ul');
                 
                 if (childList) {
-                    // Tạo wrapper
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'toc-item-wrapper';
+                    // Item này có children, cần thêm toggle
+                    const link = item.querySelector('a');
                     
-                    // Tạo toggle button
-                    const toggle = document.createElement('span');
-                    toggle.className = 'toc-toggle expanded';
-                    toggle.setAttribute('aria-label', 'Toggle section');
-                    toggle.setAttribute('role', 'button');
-                    toggle.setAttribute('tabindex', '0');
-                    
-                    // Wrap children list
-                    const childrenWrapper = document.createElement('div');
-                    childrenWrapper.className = 'toc-children';
-                    
-                    // Di chuyển child list vào wrapper
-                    const originalLink = item.querySelector('a');
-                    if (originalLink) {
-                        // Clone cấu trúc
-                        const linkClone = originalLink.cloneNode(true);
-                        wrapper.appendChild(toggle);
-                        wrapper.appendChild(linkClone);
+                    if (link) {
+                        // Tạo wrapper
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'toc-item-wrapper';
                         
-                        // Xử lý children
-                        childrenWrapper.appendChild(childList);
+                        // Tạo toggle button
+                        const toggle = document.createElement('span');
+                        toggle.className = 'toc-toggle expanded';
+                        toggle.setAttribute('role', 'button');
+                        toggle.setAttribute('tabindex', '0');
+                        toggle.setAttribute('aria-label', 'Toggle section');
+                        toggle.setAttribute('aria-expanded', 'true');
+                        
+                        // Tạo children wrapper
+                        const childrenWrapper = document.createElement('div');
+                        childrenWrapper.className = 'toc-children';
+                        
+                        // Lấy tất cả nội dung hiện tại của item
+                        const originalContent = Array.from(item.childNodes);
+                        
+                        // Thêm toggle và link vào wrapper
+                        wrapper.appendChild(toggle);
+                        wrapper.appendChild(link.cloneNode(true));
+                        
+                        // Thêm children vào childrenWrapper (trừ link đã clone)
+                        originalContent.forEach(function(node) {
+                            if (node !== link) {
+                                childrenWrapper.appendChild(node);
+                            }
+                        });
+                        
                         wrapper.appendChild(childrenWrapper);
                         
-                        // Thay thế nội dung item
+                        // Clear item và thêm wrapper
                         item.innerHTML = '';
                         item.appendChild(wrapper);
                         
-                        // Xử lý đệ quy cho children
-                        processListItems(childList);
-                        
-                        // Thêm event listener
+                        // Thêm event listeners
                         toggle.addEventListener('click', function(e) {
                             e.preventDefault();
                             e.stopPropagation();
@@ -74,45 +110,39 @@
                     }
                 }
             }
-        };
-        
-        // Toggle function
-        function toggleSection(toggle, childrenWrapper) {
-            const isExpanded = toggle.classList.contains('expanded');
-            
-            if (isExpanded) {
-                // Collapse
-                toggle.classList.remove('expanded');
-                childrenWrapper.classList.add('collapsed');
-                toggle.setAttribute('aria-expanded', 'false');
-            } else {
-                // Expand
-                toggle.classList.add('expanded');
-                childrenWrapper.classList.remove('collapsed');
-                toggle.setAttribute('aria-expanded', 'true');
-            }
-        }
-        
-        // Bắt đầu xử lý từ root list
-        const rootLists = tocContainer.querySelectorAll(':scope > ul, :scope > ol');
-        rootLists.forEach(rootList => {
-            processListItems(rootList);
         });
-        
-        // Highlight active section khi scroll
-        highlightActiveSection();
-        window.addEventListener('scroll', highlightActiveSection);
     }
     
-    // Highlight section đang active
+    // Toggle section expand/collapse
+    function toggleSection(toggle, childrenWrapper) {
+        const isExpanded = toggle.classList.contains('expanded');
+        
+        if (isExpanded) {
+            // Collapse
+            toggle.classList.remove('expanded');
+            childrenWrapper.classList.add('collapsed');
+            toggle.setAttribute('aria-expanded', 'false');
+        } else {
+            // Expand
+            toggle.classList.add('expanded');
+            childrenWrapper.classList.remove('collapsed');
+            toggle.setAttribute('aria-expanded', 'true');
+        }
+    }
+    
+    // Highlight section đang active dựa vào scroll position
     function highlightActiveSection() {
         const tocLinks = document.querySelectorAll('.toc-container a');
-        const scrollPos = window.scrollY + 100; // Offset
         
+        if (tocLinks.length === 0) return;
+        
+        const scrollPos = window.scrollY + 100; // Offset
         let currentSection = null;
         
-        tocLinks.forEach(link => {
+        // Tìm section gần nhất với scroll position
+        tocLinks.forEach(function(link) {
             const targetId = link.getAttribute('href');
+            
             if (!targetId || !targetId.startsWith('#')) return;
             
             const targetElement = document.querySelector(targetId);
@@ -125,14 +155,16 @@
             }
         });
         
-        // Remove all active classes
-        tocLinks.forEach(link => link.classList.remove('active'));
+        // Remove tất cả active classes
+        tocLinks.forEach(function(link) {
+            link.classList.remove('active');
+        });
         
-        // Add active to current
+        // Add active class vào current section
         if (currentSection) {
             currentSection.classList.add('active');
             
-            // Expand parents if collapsed
+            // Auto expand parents nếu bị collapse
             expandParents(currentSection);
         }
     }
@@ -143,72 +175,60 @@
         
         while (parent && !parent.classList.contains('toc-container')) {
             if (parent.classList.contains('toc-children') && parent.classList.contains('collapsed')) {
-                const toggle = parent.previousElementSibling;
-                if (toggle && toggle.classList.contains('toc-toggle')) {
-                    toggle.classList.add('expanded');
-                    parent.classList.remove('collapsed');
-                    toggle.setAttribute('aria-expanded', 'true');
+                // Tìm toggle button
+                const wrapper = parent.parentElement;
+                if (wrapper && wrapper.classList.contains('toc-item-wrapper')) {
+                    const toggle = wrapper.querySelector('.toc-toggle');
+                    if (toggle) {
+                        toggle.classList.add('expanded');
+                        parent.classList.remove('collapsed');
+                        toggle.setAttribute('aria-expanded', 'true');
+                    }
                 }
             }
             parent = parent.parentElement;
         }
     }
     
-    // Collapse All / Expand All buttons (optional feature)
-    function addCollapseExpandButtons() {
-        const tocTitleContainer = document.querySelector('.toc-title-container');
-        if (!tocTitleContainer) return;
+    // Smooth scroll khi click vào TOC link
+    function setupSmoothScroll() {
+        const tocLinks = document.querySelectorAll('.toc-container a');
         
-        const buttonsContainer = document.createElement('div');
-        buttonsContainer.style.cssText = 'display: flex; gap: 8px; margin-left: auto;';
-        
-        const collapseAllBtn = document.createElement('button');
-        collapseAllBtn.textContent = 'Thu gọn tất cả';
-        collapseAllBtn.className = 'toc-collapse-all-btn';
-        collapseAllBtn.style.cssText = 'font-size: 0.8rem; padding: 2px 8px; cursor: pointer; background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 3px; color: var(--text-muted);';
-        
-        const expandAllBtn = document.createElement('button');
-        expandAllBtn.textContent = 'Mở tất cả';
-        expandAllBtn.className = 'toc-expand-all-btn';
-        expandAllBtn.style.cssText = 'font-size: 0.8rem; padding: 2px 8px; cursor: pointer; background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 3px; color: var(--text-muted);';
-        
-        collapseAllBtn.addEventListener('click', () => {
-            document.querySelectorAll('.toc-toggle').forEach(toggle => {
-                toggle.classList.remove('expanded');
-                toggle.setAttribute('aria-expanded', 'false');
-            });
-            document.querySelectorAll('.toc-children').forEach(children => {
-                children.classList.add('collapsed');
+        tocLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                        
+                        // Update URL without triggering scroll
+                        history.pushState(null, null, href);
+                    }
+                }
             });
         });
-        
-        expandAllBtn.addEventListener('click', () => {
-            document.querySelectorAll('.toc-toggle').forEach(toggle => {
-                toggle.classList.add('expanded');
-                toggle.setAttribute('aria-expanded', 'true');
-            });
-            document.querySelectorAll('.toc-children').forEach(children => {
-                children.classList.remove('collapsed');
-            });
-        });
-        
-        buttonsContainer.appendChild(collapseAllBtn);
-        buttonsContainer.appendChild(expandAllBtn);
-        
-        // Make title container flex
-        tocTitleContainer.style.display = 'flex';
-        tocTitleContainer.style.alignItems = 'center';
-        tocTitleContainer.appendChild(buttonsContainer);
     }
     
     // Initialize khi DOM ready
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(initTOC, 100); // Small delay để đảm bảo TOC đã render
-            // addCollapseExpandButtons(); // Uncomment nếu muốn thêm nút collapse/expand all
+            setTimeout(function() {
+                initTOC();
+                setupSmoothScroll();
+            }, 100);
         });
     } else {
-        setTimeout(initTOC, 100);
-        // addCollapseExpandButtons(); // Uncomment nếu muốn thêm nút collapse/expand all
+        setTimeout(function() {
+            initTOC();
+            setupSmoothScroll();
+        }, 100);
     }
+    
 })();
