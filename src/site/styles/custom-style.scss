@@ -22,9 +22,42 @@ body {
             /* Style cho tiêu đề */
         }
 
-        .toc-container {
-            /* Bỏ border-left mặc định */
-        }
+                .toc-container {
+                    font-size: 1rem;
+                    overflow-y: auto;
+                    margin-bottom: 10px;
+                    border-left: 1px solid var(--text-accent);
+        
+                    ul {
+                        list-style-type: none;
+                        padding-inline-start: 15px !important;
+                        margin-top: 0;
+                        margin-bottom: 0;
+                    }
+        
+                    ul:not(:first-child) {
+                        margin-bottom: 3px;
+                    }
+        
+                    li {
+                        padding-top: 4px;
+        
+                        &::before {
+                            content: "" !important;
+                            /* Thay đổi từ "# " thành "" */
+                            color: var(--text-accent);
+                            font-size: 0.8rem;
+                        }
+        
+                        a {
+                            text-decoration: none;
+        
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
 
         ol {
             list-style: none;
@@ -64,12 +97,41 @@ body {
                     height: 0.7em;
                 }
 
+                                a {
+                                    text-decoration: none;
+                                    display: block;
+                                    padding: 2px 4px;
+                                    border-radius: 4px;
+                                    color: rgb(97, 186, 245) !important;
+                                    /* Màu giống heading */
+                                    font-style: normal;
+                                    font-weight: 100 !important;
+                                    text-transform: none;
+                                    transition: all 0.2s ease;
+                
+                                    /* Hover */
+                                    &:hover {
+                                        background-color: rgba(97, 186, 245, 0.1);
+                                        color: rgb(97, 186, 245) !important;
+                                        text-decoration: none;
+                                    }
+                
+                                    /* Active - background color khi được chọn */
+                                    &.active {
+                                        background-color: rgb(97, 186, 245) !important;
+                                        color: white !important;
+                                        font-weight: 600 !important;
+                                        border-left: 3px solid rgb(97, 186, 245);
+                                        padding-left: 17px; /* Tăng padding để chữ không bị dính vào lề */
+                                    }
+                                }
                 a {
                     text-decoration: none;
                     display: block;
                     padding: 2px 4px;
                     border-radius: 4px;
-                    color: #505050 !important;
+                    color: rgb(97, 186, 245) !important;
+                    /* Màu giống heading */
                     font-style: normal;
                     font-weight: 100 !important;
                     text-transform: none;
@@ -77,16 +139,9 @@ body {
 
                     /* Hover */
                     &:hover {
-                        background-color: rgba(0, 0, 0, 0.05);
-                        color: var(--text-accent);
+                        background-color: rgba(97, 186, 245, 0.1);
+                        color: rgb(97, 186, 245) !important;
                         text-decoration: none;
-                    }
-
-                    /* Active - QUAN TRỌNG */
-                    &.active {
-                        background-color: rgba(97, 186, 245, 0.2) !important;
-                        color: var(--text-accent) !important;
-                        font-weight: 600 !important;
                     }
                 }
 
@@ -124,6 +179,16 @@ body {
                     }
                 }
             }
+        }
+
+        /* Active - background color khi được chọn cho BẤT KỲ link nào trong TOC */
+        a.active {
+            background-color: rgb(97, 186, 245) !important;
+            color: white !important;
+            font-weight: 600 !important;
+            border-left: 3px solid rgb(97, 186, 245);
+            padding-left: 17px !important;
+            /* Tăng padding để chữ không bị dính vào lề */
         }
     }
 

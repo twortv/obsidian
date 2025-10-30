@@ -131,43 +131,60 @@
     }
     
     // Highlight section đang active dựa vào scroll position
-    function highlightActiveSection() {
-        const tocLinks = document.querySelectorAll('.toc-container a');
+    // Highlight section đang active dựa vào scroll position
+function highlightActiveSection() {
+    const tocContainer = document.querySelector('.toc-container');
+    const tocLinks = document.querySelectorAll('.toc-container a');
+    
+    if (tocLinks.length === 0) return;
+    
+    const scrollPos = window.scrollY + 100; // Offset
+    let currentSection = null;
+    
+    // Tìm section gần nhất với scroll position
+    tocLinks.forEach(function(link) {
+        const targetId = link.getAttribute('href');
         
-        if (tocLinks.length === 0) return;
+        if (!targetId || !targetId.startsWith('#')) return;
         
-        const scrollPos = window.scrollY + 100; // Offset
-        let currentSection = null;
+        const targetElement = document.querySelector(targetId);
+        if (!targetElement) return;
         
-        // Tìm section gần nhất với scroll position
-        tocLinks.forEach(function(link) {
-            const targetId = link.getAttribute('href');
+        const elementTop = targetElement.offsetTop;
+        
+        if (scrollPos >= elementTop) {
+            currentSection = link;
+        }
+    });
+    
+    // Remove tất cả active classes
+    tocLinks.forEach(function(link) {
+        link.classList.remove('active');
+    });
+    
+    // Add active class vào current section
+    if (currentSection) {
+        currentSection.classList.add('active');
+        
+        // Auto expand parents nếu bị collapse
+        expandParents(currentSection);
+        
+        // Scroll TOC để hiển thị active link
+        if (tocContainer) {
+            const linkRect = currentSection.getBoundingClientRect();
+            const containerRect = tocContainer.getBoundingClientRect();
             
-            if (!targetId || !targetId.startsWith('#')) return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (!targetElement) return;
-            
-            const elementTop = targetElement.offsetTop;
-            
-            if (scrollPos >= elementTop) {
-                currentSection = link;
+            // Kiểm tra nếu link nằm ngoài viewport của TOC container
+            if (linkRect.top < containerRect.top || linkRect.bottom > containerRect.bottom) {
+                currentSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'nearest'
+                });
             }
-        });
-        
-        // Remove tất cả active classes
-        tocLinks.forEach(function(link) {
-            link.classList.remove('active');
-        });
-        
-        // Add active class vào current section
-        if (currentSection) {
-            currentSection.classList.add('active');
-            
-            // Auto expand parents nếu bị collapse
-            expandParents(currentSection);
         }
     }
+}
     
     // Expand tất cả parent sections của active link
     function expandParents(element) {
