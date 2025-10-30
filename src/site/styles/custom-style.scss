@@ -93,10 +93,10 @@ body {
 
                     /* Active - background color khi được chọn */
                     &.active {
-                        background-color: rgb(97, 186, 245) !important;
-                        color: white !important;
-                        font-weight: 600 !important;
-                        border-left: 3px solid rgb(97, 186, 245);
+                        background-color: transparent !important;
+                        color: rgb(60, 140, 200) !important;
+                        font-weight: 700 !important;
+                        border-left: 0px solid rgb(60, 86, 200);
                         padding-left: 17px;
                         /* Tăng padding để chữ không bị dính vào lề */
                     }
@@ -136,11 +136,11 @@ body {
 
         /* Active - background color khi được chọn cho BẤT KỲ link nào trong TOC */
         a.active {
-            background-color: rgb(97, 186, 245) !important;
-            color: white !important;
-            font-weight: 600 !important;
-            border-left: 3px solid rgb(97, 186, 245);
-            padding-left: 17px !important;
+            background-color: transparent !important;
+                color: rgb(60, 140, 200) !important;
+                font-weight: 700 !important;
+                border-left: 0px solid rgb(60, 86, 200);
+                padding-left: 17px !important;
             /* Tăng padding để chữ không bị dính vào lề */
         }
     }
@@ -192,7 +192,11 @@ body {
 
     /* Đảm bảo link active vẫn có style đúng */
     .toc-item-wrapper a.active {
-        padding-left: 17px !important;
+        background-color: transparent !important;
+        color: rgb(60, 140, 200) !important;
+        font-weight: 700 !important;
+        border-left: 0px solid rgb(60, 86, 200);
+        padding-left: 17px;
     }
 
     .toc-toggle::before {

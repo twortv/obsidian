@@ -184,6 +184,18 @@ function highlightActiveSection() {
             }
         }
     }
+
+    // Thêm xử lý sự kiện click cho các link TOC
+    tocLinks.forEach(function(link) {
+        link.addEventListener('click', function(event) {
+            // Remove tất cả active
+            tocLinks.forEach(l => l.classList.remove('active'));
+            // Add active cho link vừa click
+            this.classList.add('active');
+            // Optional: Nếu muốn scroll hoặc chạy lại highlightActiveSection thì gọi thêm ở đây
+            // highlightActiveSection();
+        });
+    });
 }
     
     // Expand tất cả parent sections của active link
