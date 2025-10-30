@@ -37,11 +37,12 @@ body {
                 /* Tăng padding để có chỗ cho toggle button */
                 margin: 2px 0;
 
-                /* Đường kẻ dọc */
+                /* Đường kẻ dọc - căn chỉnh với icon toggle */
                 &::before {
                     content: '';
                     position: absolute;
-                    left: -1px;
+                    left: -6px;
+                    /* Căn giữa với icon toggle */
                     top: 0;
                     bottom: 0;
                     width: 1px;
@@ -52,16 +53,18 @@ body {
                 &::after {
                     content: '';
                     position: absolute;
-                    left: -1px;
-                    top: 0.7em;
-                    width: 10px;
+                    left: -6px;
+                    top: 12px;
+                    /* Căn giữa với icon */
+                    width: 12px;
                     height: 1px;
                     background-color: #D8D8D8;
                 }
 
                 /* Xóa đường kẻ dọc cho mục cuối cùng */
                 &:last-child::before {
-                    height: 0.7em;
+                    height: 12px;
+                    /* Dừng ở vị trí icon */
                 }
 
                 a {
@@ -82,11 +85,40 @@ body {
                         text-decoration: none;
                     }
 
-                    /* Active - QUAN TRỌNG */
+                    /* Active - QUAN TRỌNG - Màu theo level của heading */
                     &.active {
-                        background-color: rgba(97, 186, 245, 0.2) !important;
-                        color: var(--text-accent) !important;
                         font-weight: 600 !important;
+                    }
+
+                    /* Màu cho từng level heading */
+                    &.active[data-heading-level="h1"] {
+                        background-color: rgba(255, 239, 96, 0.25) !important;
+                        color: #ffef60 !important;
+                    }
+
+                    &.active[data-heading-level="h2"] {
+                        background-color: rgba(240, 100, 73, 0.25) !important;
+                        color: #f06449 !important;
+                    }
+
+                    &.active[data-heading-level="h3"] {
+                        background-color: rgba(212, 252, 195, 0.35) !important;
+                        color: #5fb844 !important;
+                    }
+
+                    &.active[data-heading-level="h4"] {
+                        background-color: rgba(114, 220, 255, 0.25) !important;
+                        color: #72dcff !important;
+                    }
+
+                    &.active[data-heading-level="h5"] {
+                        background-color: rgba(97, 186, 245, 0.2) !important;
+                        color: rgb(97, 186, 245) !important;
+                    }
+
+                    &.active[data-heading-level="h6"] {
+                        background-color: rgba(97, 186, 245, 0.15) !important;
+                        color: rgb(97, 186, 245) !important;
                     }
                 }
 
@@ -138,37 +170,44 @@ body {
 
     .toc-toggle {
         position: absolute;
-        left: -18px;
-        top: 4px;
-        width: 14px;
-        height: 14px;
+        left: -12px;
+        /* Căn chỉnh với đường kẻ dọc */
+        top: 6px;
+        width: 12px;
+        height: 12px;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        border-radius: 3px;
+        border-radius: 2px;
         transition: all 0.2s ease;
-        color: #999999;
-        font-size: 10px;
-        line-height: 1;
         user-select: none;
-        z-index: 1;
+        z-index: 2;
+        /* Để icon nằm trên đường kẻ */
     }
 
     .toc-toggle:hover {
-        background-color: #E0E0E0;
-        color: #333333;
+        background-color: rgba(0, 0, 0, 0.08);
     }
 
+    /* Icon chevron mảnh giống Obsidian - sử dụng SVG inline */
     .toc-toggle::before {
-        content: "▶";
+        content: "";
         display: block;
-        transform: rotate(0deg);
+        width: 8px;
+        height: 8px;
+        border-right: 1.5px solid #666666;
+        border-bottom: 1.5px solid #666666;
+        transform: rotate(-45deg) translateX(-1px);
         transition: transform 0.2s ease;
     }
 
     .toc-toggle.expanded::before {
-        transform: rotate(90deg);
+        transform: rotate(45deg) translateY(-1px);
+    }
+
+    .toc-toggle:hover::before {
+        border-color: #333333;
     }
 
     .toc-children {
@@ -230,9 +269,21 @@ body {
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+/* Fix TOC không bị ẩn khi thu gọn màn hình - Override digital-garden-base.scss */
+@media (max-width: 1400px) {
+    body .toc {
+        display: block !important;
+        /* Giữ TOC hiển thị trên tất cả các kích thước màn hình */
+        margin-top: 20px;
+    }
+}
+
 @media (max-width: 768px) {
     body .toc {
         font-size: 0.9rem;
+        display: block !important;
+        /* Đảm bảo TOC vẫn hiển thị trên mobile */
     }
 
     body .toc ol li {
