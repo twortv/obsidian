@@ -23,10 +23,6 @@
     {% endmacro %}
     
     <div x-data="{ showFilesMobile: false }">
-
-        <div x-show.important="true" style="display: block;">
-            {%include "components/filetreeNavbar.njk"%}
-        </div>
         
         <div x-show="showFilesMobile" @click="showFilesMobile = false" style="display:none;" class="fullpage-overlay"></div>
 

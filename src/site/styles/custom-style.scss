@@ -281,6 +281,30 @@ body {
     }
 }
 
+/* Căn giữa nội dung, loại bỏ mọi margin-left còn sót khi có filetree */
+.content.cm-s-obsidian {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Khi TOC hiển thị bên phải (>=1000px), căn giữa content trong phần còn lại của màn hình */
+@media (min-width: 1000px) {
+    /* Dành khoảng trống bên phải đúng bằng bề rộng TOC để căn giữa phần còn lại */
+    body {
+        padding-right: 320px;
+        box-sizing: border-box;
+    }
+
+    .content.cm-s-obsidian {
+        /* Dùng max-width mặc định (700px) và margin auto để căn giữa trong phần còn lại */
+        width: auto;
+        max-width: 700px;
+        /* Căn giữa nội dung trong phần còn lại (trừ TOC 320px) */
+        margin-left: max(calc((100vw - 320px - 700px) / 2), 0px) !important;
+        margin-right: auto !important;
+    }
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */
