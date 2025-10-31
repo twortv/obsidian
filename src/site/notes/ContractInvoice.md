@@ -122,7 +122,6 @@
 | **Ghi chú & QR Code** \- 2 | Ghi chú, Link mã QR | Ghi chú thêm và lưu link mã QR thanh toán (nếu có). |
 | **Tổng số trường** | **13** |  |
 
-#### 
 
 ##### **1.3. Hóa đơn**
 
@@ -166,24 +165,17 @@
 
 ##### **2.2. Kết nối Loại việc**
 
-##### 
-
 | *Loại Kết nối* | *Mô tả* |
 | :---- | :---- |
 | Hợp đồng \<=\> Khách hàng | \[Khách hàng\] \<=\> \[Hợp đồng\]. Cho biết hợp đồng thuộc về khách nào và khách có hợp đồng nào |
 | Hợp đồng \<=\> Cơ hội | \[Cơ hội\] \<=\> \[Hợp đồng\]. Cho biết hợp đồng thuộc về cơ hội nào và cơ hội có các hợp đồng nào |
 
-##### 
 
 ##### **2.3. Trường chọn Đầu việc**
 
 | *Trường* | *Tham chiếu* | *Mô tả* |
 | :---- | :---- | :---- |
 | Hợp đồng / **Khách hàng** | **Loại việc tham chiếu đến**: Khách hàng (từ chức năng CRM) / **Hiển thị**: Tên khách hàng, Mã khách hàng. | Cho phép chọn một khách hàng từ danh sách có sẵn trong chức năng CRM để tự động điền thông tin, tránh nhập liệu lại. |
-
-### 
-
-### 
 
 ### **C. TỰ ĐỘNG HOÁ**
 
@@ -196,17 +188,14 @@
 | 3\. In hợp đồng | **Hợp đồng** / Menu "In hợp đồng" | **Nhập liệu**: Yêu cầu người dùng xác nhận các thông tin chính.**Hành động**: Gửi dữ liệu của Hợp đồng qua HTTP Request đến một dịch vụ bên ngoài (N8N) để tạo file GG docs/PDF theo mẫu và trả link về. |
 | 4\. Gửi thông báo thanh toán | **Phiếu thu** / Menu "Gửi thông báo" | **Nhập liệu**: Xác nhận thông tin thanh toán.**Hành động**: Gửi email tới khách hàng với nội dung thông báo thanh toán, bao gồm số tiền, hạn thanh toán và link QR. |
 
-#### 
 
 #### **2\. Hành động trên Đầu việc**
 
-#### 
 
 | *Quy tắc* | *Kích hoạt* | *Hành động* |
 | :---- | :---- | :---- |
 | 5\. Cập nhật công nợ vào Hợp đồng | Khi Đầu việc **Phiếu thu** chuyển sang trạng thái "ĐÃ THANH TOÁN". | **Luồng thực thi**: Chuyển đến Đầu việc Hợp đồng cha.**Hành động**: Lấy giá trị trường "Số tiền" của Phiếu thu và cộng dồn vào trường "Đã thanh toán" của Hợp đồng cha. |
 
-#### 
 
 #### **3\. Kết nối app bên ngoài**
 
@@ -215,7 +204,6 @@
 | 6\. \[N8N\] Tạo file Hợp đồng GG docs/PDF | Khi người dùng chọn menu "In hợp đồng" trên Đầu việc **Hợp đồng**. | **Hành động**: Luklak gửi HTTP Request chứa dữ liệu của Hợp đồng (Tên KH, giá trị, điều khoản...) sang N8N. N8N xử lý, điền vào template và trả về một webhook chứa link file GG docs/PDF. |
 | 7\. \[N8N\] Cập nhật link file PDF | Khi N8N gửi webhook về Luklak sau khi đã tạo file thành công. | **Hành động**: Cập nhật giá trị link file PDF vào trường "File hợp đồng" trên Đầu việc Hợp đồng tương ứng. Gửi email chứa link hợp đồng cho khách hàng. |
 
-### 
 
 ### **D. GIAO DIỆN LÀM VIỆC, BÁO CÁO, BỘ LỌC**
 
@@ -233,12 +221,12 @@
 
 #### 
 
-| *Khối trình bày* | *Dữ liệu* | *Mô tả* |
-| :---- | :---- | :---- |
-| 1\. Tổng quan Doanh thu \[Bộ đếm & Tính toán\] | Tổng hợp dữ liệu từ tất cả Hợp đồng đã ký kết. | Hiển thị các chỉ số chính: Tổng giá trị hợp đồng đã ký, Tổng số tiền đã thu, Tổng công nợ còn lại. |
-| 2\. Tình hình Hợp đồng theo Trạng thái \[Biểu đồ tròn\] | Dữ liệu từ tất cả các Đầu việc loại "Hợp đồng". | Biểu đồ thể hiện tỷ lệ phần trăm số lượng hợp đồng ở mỗi trạng thái (Soạn thảo, Soát xét, Đã ký...), giúp nhận biết các điểm nghẽn trong quy trình. |
-| 3\. Doanh thu theo Nhân viên Kinh doanh \[Biểu đồ cột\] | Dữ liệu từ các Hợp đồng đã ký, nhóm theo trường "Người bán hàng". | So sánh hiệu suất của các nhân viên kinh doanh dựa trên tổng giá trị hợp đồng họ mang về trong một khoảng thời gian. |
-| 4\. Danh sách Hóa đơn quá hạn \[Danh sách Đầu việc\] | Lọc các Đầu việc loại "Hóa đơn" có trạng thái "CHỜ THANH TOÁN" và "Hạn thanh toán" đã qua. | Cung cấp danh sách các hóa đơn cần đốc thúc thu nợ ngay lập tức. |
+| *Khối trình bày*                                        | *Dữ liệu*                                                                                  | *Mô tả*                                                                                                                                             |
+| :------------------------------------------------------ | :----------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1\. Tổng quan Doanh thu \[Bộ đếm & Tính toán\]          | Tổng hợp dữ liệu từ tất cả Hợp đồng đã ký kết.                                             | Hiển thị các chỉ số chính: Tổng giá trị hợp đồng đã ký, Tổng số tiền đã thu, Tổng công nợ còn lại.                                                  |
+| 2\. Tình hình Hợp đồng theo Trạng thái \[Biểu đồ tròn\] | Dữ liệu từ tất cả các Đầu việc loại "Hợp đồng".                                            | Biểu đồ thể hiện tỷ lệ phần trăm số lượng hợp đồng ở mỗi trạng thái (Soạn thảo, Soát xét, Đã ký...), giúp nhận biết các điểm nghẽn trong quy trình. |
+| 3\. Doanh thu theo Nhân viên Kinh doanh \[Biểu đồ cột\] | Dữ liệu từ các Hợp đồng đã ký, nhóm theo trường "Người bán hàng".                          | So sánh hiệu suất của các nhân viên kinh doanh dựa trên tổng giá trị hợp đồng họ mang về trong một khoảng thời gian.                                |
+| 4\. Danh sách Hóa đơn quá hạn \[Danh sách Đầu việc\]    | Lọc các Đầu việc loại "Hóa đơn" có trạng thái "CHỜ THANH TOÁN" và "Hạn thanh toán" đã qua. | Cung cấp danh sách các hóa đơn cần đốc thúc thu nợ ngay lập tức.                                                                                    |
 
 #### 
 
