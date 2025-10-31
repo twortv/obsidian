@@ -2,11 +2,11 @@
 {"dg-publish":true,"permalink":"/contract-invoice/","tags":["gardenEntry"],"noteIcon":""}
 ---
 
-# File giải pháp chức năng Contract & Invoice haha
+# File giải pháp chức năng Contract & Invoice
 
 ### **A. TỔNG QUAN**
 
-#### **1\. Mô tả chung**
+#### **1\. Mô tả chung** 2
 
 **Mục đích**: Chức năng này được thiết kế để quản lý toàn bộ vòng đời của hợp đồng và các chứng từ tài chính liên quan như hóa đơn, phiếu thu. Nó giúp chuẩn hóa quy trình, tự động hóa các tác vụ lặp lại và cung cấp một cái nhìn tổng thể về tình hình tài chính, công nợ với khách hàng.
 
