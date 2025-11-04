@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/luklak/hrm-solution-luklak/","noteIcon":""}
+{"dg-publish":true,"permalink":"/luklak/hrm-solution-luklak/","tags":["gardenEntry"],"noteIcon":""}
 ---
 
 # GIẢI PHÁP: HRM SOLUTION - QUẢN TRỊ NHÂN SỰ TOÀN DIỆN
