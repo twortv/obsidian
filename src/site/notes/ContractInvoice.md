@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/contract-invoice/","noteIcon":""}
+{"dg-publish":true,"permalink":"/contract-invoice/","tags":["gardenEntry"],"noteIcon":""}
 ---
 
 # File giải pháp chức năng Contract & Invoice
