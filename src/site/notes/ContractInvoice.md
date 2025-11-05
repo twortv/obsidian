@@ -10,7 +10,7 @@
 
 **Mục đích**: Chức năng này được thiết kế để quản lý toàn bộ vòng đời của hợp đồng và các chứng từ tài chính liên quan như hóa đơn, phiếu thu. Nó giúp chuẩn hóa quy trình, tự động hóa các tác vụ lặp lại và cung cấp một cái nhìn tổng thể về tình hình tài chính, công nợ với khách hàng.
 
-**Logic nghiệp vụ:** Quy trình bắt đầu từ việc tạo và soạn thảo Hợp đồng. Hợp đồng sau đó sẽ qua các bước soát xét nội bộ (Pháp chế, Quản lý) trước khi gửi cho khách hàng và ký kết. Sau khi hợp đồng được ký, hệ thống cho phép tạo các Hóa đơn và Phiếu thu tương ứng với các đợt thanh toán. Các phiếu thu được theo dõi tình trạng thanh toán (chờ thanh toán, đã thanh toán, quá hạn) và dữ liệu sẽ được cập nhật tự động ngược lại vào hợp đồng gốc để theo dõi tiến độ thanh toán tổng thể.
+==**Logic nghiệp vụ:** Quy trình bắt đầu từ việc tạo và soạn thảo Hợp đồng. Hợp đồng sau đó sẽ qua các bước soát xét nội bộ (Pháp chế, Quản lý) trước khi gửi cho khách hàng và ký kết. Sau khi hợp đồng được ký, hệ thống cho phép tạo các Hóa đơn và Phiếu thu tương ứng với các đợt thanh toán. Các phiếu thu được theo dõi tình trạng thanh toán (chờ thanh toán, đã thanh toán, quá hạn) và dữ liệu sẽ được cập nhật tự động ngược lại vào hợp đồng gốc để theo dõi tiến độ thanh toán tổng thể.==
 
 **Tác động kinh doanh:**
 
