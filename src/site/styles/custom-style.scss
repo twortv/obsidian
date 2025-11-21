@@ -21,10 +21,6 @@ body {
         z-index: 3;
     }
 
-    .markdown-preview-view mark {
-        background-color: rgba(255, 208, 0, 0.4);
-    }
-
     /* ============================================
        TOC STYLING - Giữ nguyên style gốc + thêm expand/collapse
        ============================================ */
@@ -397,4 +393,24 @@ body {
     .toc {
         display: none !important;
     }
+}
+
+/* Override highlight color - PHẢI ĐẶT CUỐI FILE custom-style.scss */
+
+/* Override biến CSS */
+body {
+    --text-highlight-bg: rgba(255, 208, 0, 0.4) !important;
+    --text-highlight-bg-active: rgba(255, 208, 0, 0.6) !important;
+}
+
+/* Override trực tiếp cho markdown rendered */
+.markdown-rendered mark,
+.markdown-preview-view mark {
+    background-color: rgba(255, 208, 0, 0.4) !important;
+}
+
+/* Override cho editor mode (CodeMirror) */
+.cm-s-obsidian span.cm-formatting-highlight,
+.cm-s-obsidian span.cm-highlight {
+    background-color: rgba(255, 208, 0, 0.4) !important;
 }
