@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/home-obsidian-note/","tags":["gardenEntry"],"noteIcon":""}
 ---
 
-# Khu vườn viết linh tinh 🌱🌼
+# Vườn rau viết linh tinh 🌱🌼
 
 ```text
 ████████╗██╗    ██╗ ██████╗ ██████╗ 
