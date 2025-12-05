@@ -1,7 +1,6 @@
 ---
-{"dg-publish":true,"permalink":"/luklak/template/kich-ban-guidejar-total-customer-solution/","tags":["gardenEntry"],"noteIcon":""}
+{"dg-publish":true,"permalink":"/luklak/template/kich-ban-guidejar-total-customer-solution/","noteIcon":""}
 ---
-
 
 
 ## Cấu trúc hệ thống
