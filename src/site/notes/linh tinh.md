@@ -4,4 +4,4 @@
 
 sang năm con cưới do có bầu. Chúc mừng hai vợ chồng nhé
 
-![Pasted image 20251210153428.png](/img/user/Pasted%20image%2020251210153428.png)
+![Pasted image 20251210153428.png](/img/user/img/Pasted%20image%2020251210153428.png)
