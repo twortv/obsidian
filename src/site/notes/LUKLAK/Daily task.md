@@ -2,8 +2,9 @@
 {"dg-publish":true,"permalink":"/luklak/daily-task/","noteIcon":""}
 ---
 
-![3d98643e-0b2f-49c9-a10c-8a8eed507a61.png](/img/user/img/3d98643e-0b2f-49c9-a10c-8a8eed507a61.png)
+## Daily task
 
+![3d98643e-0b2f-49c9-a10c-8a8eed507a61.png](/img/user/img/3d98643e-0b2f-49c9-a10c-8a8eed507a61.png)
 
 ### Kí hiệu
 - **Các mức độ ưu tiên:**
@@ -33,9 +34,9 @@
 | ------- | --------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------------------------- | ---------- |
 | 🔴      | Check phương án cho 3 sao về đề xuất                                              | 10:00 AM |                                                                                                     | ✅          |
 | 🟢      | Check Thaco                                                                       | 12:00 AM |                                                                                                     | ✅          |
-| 🟡      | Xử lý merge chuyến xe cho 3 sao                                                   | 17:00    |                                                                                                     | ⏳          |
+| 🟡      | Xử lý merge chuyến xe cho 3 sao                                                   | 17:00    | - Đang làm nhưng gặp bug                                                                            | ✅          |
 | 🟡      | Check bug cho chị Đặng Linh<br>- Bug người quyền cao<br>- Bug khung giờ chấm công | 12:00    | - Bug chấm công chưa tìm ra logic bị như thế, cần theo dõi thêm<br>- Bug người quyền cao đang check | ✅          |
-| 🟡      | Xử lý guidejar cho TCS                                                            | 17:30    |                                                                                                     | ⏳          |
+| 🟡      | Xử lý guidejar cho TCS                                                            | 17:30    | - chưa có thời gian làm                                                                             | ❌          |
 | 🟡      | Check + Hỏi lại anh Bình vụ báo cáo                                               | 17:30    | - Hân đã check                                                                                      | ✅          |
 | 🟢      | Check cho Minh anh phần phiếu thu - chi khác                                      | 14:00    |                                                                                                     | ✅          |
 | 🟡      | Check cách xử lý cho kiot việt                                                    | 15:00    | - không làm được                                                                                    | ✅          |
@@ -47,10 +48,10 @@
 | ------- | ---------------------------------------- | -------- | ------- | ---------- |
 | 🟢      | Check Thaco                              | 12:00    |         | ✅          |
 | 🔴      | Xử lý merge chuyến xe cho 3 Sao          | 12:00    |         | ⏳          |
-| 🟡      | Theo dõi lỗi chám công của chị Đặng Linh | 144:00   |         | ⏳          |
-|         |                                          |          |         | ⏳          |
-|         |                                          |          |         | ⏳          |
-|         |                                          |          |         | ⏳          |
+| 🟡      | Theo dõi lỗi chám công của chị Đặng Linh | 14:00    |         | ⏳          |
+| 🟡      | Bổ sung 1 vài câu SQL cho demo SJP       | 17:00    |         | ⏳          |
+| 🟡      | Xử lý data với airbyte                   | 17:30    |         | ⏳          |
+|         |                                          |          |         |            |
 |         |                                          |          |         |            |
 |         |                                          |          |         |            |
 
