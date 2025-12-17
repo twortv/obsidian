@@ -2,136 +2,74 @@
 {"dg-publish":true,"permalink":"/linh-tinh/","noteIcon":""}
 ---
 
-Dựa theo màn hình cấu hình VPN trên **Windows** bạn gửi (L2TP/IPsec với Pre-shared key), dưới đây là **cách cấu hình tương đương trên macOS** (Ventura / Sonoma / Monterey đều gần giống nhau).
+Chào bạn, để cấu hình VPN này trên Mac Mini (macOS), bạn cần lưu ý một điểm quan trọng: Trên Windows có chế độ **"Automatic"** (Tự động chọn giao thức), nhưng trên macOS bạn **phải chọn thủ công** giao thức cụ thể (thường là **L2TP over IPSec** hoặc **IKEv2**).
 
----
+Dựa trên thông tin trong ảnh (Username/Password và IP), khả năng cao nhất đây là giao thức **L2TP over IPSec**.
 
-## 1️⃣ Mở phần cấu hình VPN trên macOS
+Dưới đây là hướng dẫn từng bước (áp dụng cho macOS Ventura/Sonoma trở lên):
 
-1. Vào **System Settings (Cài đặt hệ thống)**
+### Bước 1: Mở cài đặt mạng
+
+1. Bấm vào biểu tượng **Apple ()** ở góc trái trên cùng > chọn **System Settings** (Cài đặt hệ thống).
     
-2. Chọn **Network**
+2. Chọn mục **VPN** ở thanh bên trái (hoặc vào Network > VPN).
     
-3. Nhấn **`+`** (Add Service)
-    
-4. Chọn:
-    
-    - **Interface**: `VPN`
-        
-    - **VPN Type**: `L2TP over IPSec`
-        
-    - **Service Name**:  
-        👉 `VPN CHUNG - VĂN PHÒNG LUKLAK`
-        
-5. Nhấn **Create**
+3. Bấm vào nút **Add VPN Configuration** (Thêm cấu hình VPN) > Chọn **L2TP over IPSec**.
     
 
----
+### Bước 2: Điền thông tin cấu hình
 
-## 2️⃣ Nhập thông tin tương ứng từ Windows sang macOS
+Một cửa sổ sẽ hiện ra, bạn điền các thông tin từ ảnh vào như sau:
 
-### 🔹 General (Chung)
-
-|Windows|macOS|
-|---|---|
-|Server name or address|**Server Address**|
-|`222.252.29.95`|`222.252.29.95`|
-|User name|**Account Name**|
-|`van`|`van`|
-
-📌 **Account Name** = User name trên Windows
-
----
-
-### 🔹 Authentication Settings…
-
-Nhấn nút **Authentication Settings…**
-
-#### 🔐 User Authentication
-
-- Chọn **Password**
+- **Display Name (Tên hiển thị):** `VPN CHUNG - VAN PHONG LUKLAK` (Bạn có thể đặt tùy ý).
     
-- Nhập **Password** (giống Windows)
+- **Server Address (Địa chỉ máy chủ):** `222.252.29.95`
+    
+- **Account Name (Tên tài khoản):** `artele`
+    
+- **Password (Mật khẩu):** `weeb-jek-CLAW`
+    
+- **User Authentication (Xác thực người dùng):** Chọn "Password".
     
 
-#### 🔐 Machine Authentication
+### Bước 3: Điền Shared Secret (Quan trọng)
 
-- Chọn **Shared Secret**
+Đây là phần **thiếu trong ảnh** của bạn. Với giao thức L2TP, ngoài User/Pass, bạn bắt buộc phải có một chuỗi khóa bí mật gọi là **Shared Secret** (hoặc Pre-Shared Key).
+
+- **Machine Authentication (Xác thực máy):** Chọn "Shared Secret".
     
-- Nhập **Pre-shared key**  
-    (giống mục _Pre-shared key_ trên Windows)
-    
-
-👉 Nhấn **OK**
-
----
-
-## 3️⃣ Cấu hình nâng cao (RẤT QUAN TRỌNG)
-
-Nhấn **Advanced…**
-
-✔ Tick:
-
-- ✅ **Send all traffic over VPN connection**  
-    (nếu muốn toàn bộ mạng đi qua VPN – giống hành vi Windows)
+- **Shared Secret:** Bạn cần hỏi quản trị viên mạng (IT) của văn phòng để lấy chuỗi ký tự này. _(Trên Windows, nó thường bị ẩn trong nút Advanced Settings > thẻ Security > mục preshared key)._
     
 
-❌ Không cần tick các mục khác trừ khi IT yêu cầu
+### Bước 4: Tùy chỉnh nâng cao (Để vào được mạng nội bộ)
 
-👉 Nhấn **OK**
+Sau khi điền xong, đừng vội kết nối ngay.
 
----
-
-## 4️⃣ Lưu & Kết nối
-
-1. Nhấn **Apply**
+1. Bấm vào chữ **(i)** hoặc nút **Options** bên cạnh cấu hình vừa tạo.
     
-2. Nhấn **Connect**
+2. Đảm bảo tích chọn mục **"Send all traffic over VPN connection"** (Gửi tất cả lưu lượng qua kết nối VPN). Điều này giúp bạn truy cập được các server nội bộ của công ty.
+    
+3. Bấm **OK** / **Create**.
     
 
-Nếu đúng thông tin:
+### Bước 5: Kết nối
 
-- Trạng thái sẽ chuyển sang **Connected**
-    
-- Biểu tượng VPN xuất hiện trên thanh menu
+- Gạt công tắc sang **ON** để kết nối.
     
 
 ---
 
-## 5️⃣ So sánh nhanh Win vs Mac (để bạn dễ đối chiếu)
+### Lưu ý nếu không kết nối được:
 
-|Windows|macOS|
-|---|---|
-|VPN type: L2TP/IPsec with PSK|L2TP over IPSec|
-|Server IP|Server Address|
-|Pre-shared key|Shared Secret|
-|Username|Account Name|
-|Password|Password|
+Nếu bạn chọn **L2TP over IPSec** mà báo lỗi, hãy thử xóa đi và tạo lại với loại **IKEv2**:
 
----
-
-## 6️⃣ Nếu không kết nối được – checklist nhanh
-
-Nếu lỗi ❌, hãy kiểm tra:
-
-- 🔹 IP `222.252.29.95` có ping được không
+- **Server Address:** `222.252.29.95`
     
-- 🔹 Pre-shared key **có đúng 100% không** (phân biệt hoa/thường)
+- **Remote ID:** `222.252.29.95` (Nhập giống Server IP).
     
-- 🔹 Router / firewall **có chặn UDP 500, 1701, 4500 không**
+- **Local ID:** (Để trống).
     
-- 🔹 macOS **không bật iCloud Private Relay**
+- **Authentication:** Username & Password.
     
 
----
-
-Nếu bạn muốn, bạn có thể:
-
-- 📸 Gửi **ảnh màn hình lỗi trên Mac**
-    
-- ❓ Cho biết **phiên bản macOS**
-    
-- 🔐 Cho biết VPN này là **server gì (MikroTik / Fortigate / Windows RRAS / strongSwan …)**
-    
-
-👉 mình sẽ debug chính xác từng bước cho bạn.
+Nhưng theo kinh nghiệm của tôi với các form "Windows built-in" như ảnh, 90% trường hợp là **L2TP over IPSec** và bạn cần hỏi xin **Shared Secret Key** để điền vào.
