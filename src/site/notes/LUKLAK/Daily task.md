@@ -124,7 +124,7 @@
 | 🔴      | Xử lý Đề xuất mua sắm cho ba sao    | 17:30    |                                  | ⏳          |
 | 🔴      | Trả lời thông tin về bug cho ae dev | 10:00    |                                  | ✅          |
 | 🔴      | Trả lời thông tin cho chị Hằng      | 12:00    |                                  | ✅          |
-|         |                                     |          |                                  |            |
+| 🔴      | nói chuyện với Hân ngu              |          |                                  | ⏳          |
 
 
 
