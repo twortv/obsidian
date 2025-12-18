@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/personal-note/note-yeu-va-cuoi/","noteIcon":""}
 ---
 
-
+# Trước khi cưới ai đó....
 ![Pasted image 20251217113027.png](/img/user/img/Pasted%20image%2020251217113027.png)
 
 
@@ -10,17 +10,15 @@ Thích thì cứ yêu, nhưng tới khi kết hôn tình yêu chỉ là thứ y�
 
 Xem gia cảnh, không phải là xem gia đình bên kia giàu hay nghèo, bố mẹ họ có địa vị trong xã hội hay không. Xem gia cảnh ở đây là xem cách gia đình người ta đối nhân xử thế, nếp sống sinh hoạt, không khí giữa các thành viên trong gia đình, bởi những điều này ít nhiều ảnh hưởng đến góc nhìn, cách sống của đối phương, ảnh hưởng trực tiếp đến cuộc sống của bạn sau này.
 
-1. Cách bố mẹ làm ra tiền ảnh hưởng trực tiếp đến khả năng kiếm tiền của người yêu bạn
+1. ***Cách bố mẹ làm ra tiền ảnh hưởng trực tiếp đến khả năng kiếm tiền của người yêu bạn***
 
 Lúc mới yêu, chúng ta thi thoảng có thể dẫn người mình yêu ra nhà hàng, ăn những món ăn ngon, đắt tiền hơn một chút. Đến khi kết hôn rồi, ta và người ta yêu một ngày ăn với nhau ba bữa, ăn liên tục 7 ngày 1 tuần, 4 tuần 1 tháng, 12 tháng 1 năm….Các bữa ăn xa hoa sẽ ít lại, những bữa ăn có cân nhắc đến yếu tố tài chính trong gia đình sẽ nhiều hơn. Lúc này, để tình yêu luôn vững bền, khả năng kiếm tiền của 2 người sẽ đóng một vai trò lớn.
 
 Trường hợp gia đình người yêu của bạn có xuất thân bình thường, không nghèo cũng không giàu, nhưng bố mẹ của họ là những người siêng năng, cần cù trong công việc, có học vấn và luôn cảm thấy hài lòng hạnh phúc với cuộc sống: Đừng chần chừ và hãy kết hôn với họ, bởi cách sống của bố mẹ họ sẽ giúp người này thực tế, lạc quan, người ấy sẽ biết cách vượt qua những khó khăn nghịch cảnh, kiếm tiền đủ để vun vén hạnh phúc của gia đình.
 
-Trường hợp gia đình người yêu của bạn khá giả, nhưng bố mẹ họ là một người hoài nghi, có nhiều mưu mô, toan tính để sản sinh ra lợi nhuận: Cân nhắc thật kĩ trước khi kết hôn với người này bion cái lớn lên trong môi trường đó thường mang theo một niềm tin rất sâu:
+Trường hợp gia đình người yêu của bạn khá giả, nhưng bố mẹ họ là một người hoài nghi, có nhiều mưu mô, toan tính để sản sinh ra lợi nhuận: Cân nhắc thật kĩ trước khi kết hôn với người này bion cái lớn lên trong môi trường đó thường mang theo một niềm tin rất sâu: **mọi thứ đều phải có lợi thì mới làm**.
 
-mọi thứ đều phải có lợi thì mới làm.
-
-2. Cách bố mẹ người yêu bạn chung sống với nhau ảnh hưởng trực tiếp đến cách họ chung sống với bạn sau này
+2. ***Cách bố mẹ người yêu bạn chung sống với nhau ảnh hưởng trực tiếp đến cách họ chung sống với bạn sau này***
 
 Một cuộc hôn nhân được gọi là như ý khi hai người có thể chung sống tới đầu bạc răng long, hạnh phúc một đời.
 
@@ -36,7 +34,7 @@ Và còn câu chuyện này nữa!
 
 Tất cả mọi người đều nói anh ta không phù hợp với cô ấy. Một hôm, cô gái đến nhà gặp bố mẹ chàng trai. Khi ăn cơm cùng họ, cô để ý bác trai uống rượu say bí tỉ, còn bác gái ăn vội ăn vàng rồi nhanh chóng thu xếp bát đũa đi làm việc khác. Ngay sau ấy, cô quyết định nói lời chia tay. Bởi sự lạnh nhạt của bố mẹ chàng trai làm cô chắc mẩm rằng nếu cưới anh chàng này, cô cũng sẽ không được tôn trọng.
 
-3. Cách bố mẹ đối nhân xử thế ảnh hưởng đến cách người yêu bạn gắn bó và yêu thương
+3. ***Cách bố mẹ đối nhân xử thế ảnh hưởng đến cách người yêu bạn gắn bó và yêu thương***
 
 Khi yêu, con người thường bị thu hút bởi những ưu điểm của đối phương. Nhưng khi bước vào hôn nhân, điều quyết định sự bền vững không nằm ở ưu điểm, mà ở cách hai người sống chung với những phần không hoàn hảo của nhau.
 
@@ -105,3 +103,6 @@ Vì vậy, xem gia cảnh không phải để chê hay bỏ ai.
 Mà để biết: mình có đủ sức sống trong nếp sống đó suốt cả phần đời còn lại hay không?
 
 (Theo Trí Thức Trẻ, bài đã qua chỉnh sửa)
+
+
+4010130643202
